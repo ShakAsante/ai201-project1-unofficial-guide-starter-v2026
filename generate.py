@@ -281,7 +281,6 @@ Rules:
 - Name the document your answer came from, using the filename given in each excerpt.
 - Be brief. Two or three sentences is usually enough."""
 
-
 def build_prompt(question: str, results) -> str:
     """
     Assemble the grounded prompt out of retrieved chunks.
@@ -291,9 +290,11 @@ def build_prompt(question: str, results) -> str:
     this returns. Reading it once is the fastest way to see that retrieval,
     not the model, decides what an answer can possibly be based on.
     """
+
     context = "\n\n".join(
         f"[from {r.source}]\n{r.text}" for r in results
     )
+    
     return (
         f"Documents:\n\n{context}\n\n"
         f"---\n\nQuestion: {question}\n\n"

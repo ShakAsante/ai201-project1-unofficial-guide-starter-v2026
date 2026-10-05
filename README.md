@@ -28,7 +28,8 @@ Corpora Picked: **Campus Life**
 
      Milestone 5. -->
 
-The corpus that i had picked was campus life, and it provided information relative to the grading materials deadlines, majors, and graduation requirements on the cam
+The corpus I picked was **Campus Life**. It provides information related to grading materials, deadlines, majors, and graduation requirements on campus. Its goal is to answer students’ questions accurately and provide useful information about campus life. It uses Gemini as its backend as part of a RAG system.
+
 
 ## Chunking Strategy
 
@@ -148,9 +149,9 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 
      Milestone 5. -->
 
-**1.**
+**1.** Explain the current codebase and its functionality, so that way i can implement and extend off the current code.
 
-**2.**
+**2.** Based off that explanation of the codebase, i am planning implement features such as semantic meaning detection to the rag layer.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
