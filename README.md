@@ -33,18 +33,14 @@ The corpus I picked was **Campus Life**. It provides information related to grad
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size:** 800 characters per chunk  
+**Overlap:** 120 characters between neighboring chunks
 
-<!-- What about YOUR documents made you pick these numbers? Short posts and
-     long sectioned guides don't want the same chunking, and "800 seemed
-     reasonable" earns nothing. Point at something you noticed when you read
-     the documents in Milestone 1.
-
-     If you changed your mind partway through, say so and say why. That's worth
-     more than pretending you got it right first time.
-
-     Milestone 3. -->
+I picked these numbers because the Campus Life corpus mixes short policy notes,
+student advice, and longer explanatory entries. A chunk around 800 characters
+keeps most facts readable in one passage without swallowing multiple topics,
+while the 120-character overlap helps preserve continuity when a concept spans a
+break between adjacent documents or paragraphs.
 
 ## Sample Chunks
 
@@ -116,27 +112,39 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
 
-**Question:**
+**Question:** When can I declare my major?
 
-**Answer:**
+**Answer:** You declare at the end of your second semester, or later if you need
+to. There is no penalty for declaring late, and there is no advantage to
+declaring early except that it assigns you a departmental adviser.
 
 ```
+Source: admin_declaring_a_major.txt
+On the declaring a major
+
+You declare at the end of your second semester, or later if you need to. There's no penalty for declaring late and no advantage to declaring early except that it assigns you a departmental adviser, who is generally more useful than the general one.
 ```
 
-**My relevance cutoff:**
+**My relevance cutoff:** 0.60
 
-<!-- The number you set in config.py, and how you got there.
+I measured the best retrieval distance for five in-corpus questions and five
+out-of-scope questions. The in-corpus questions stayed below 0.62, while the
+out-of-scope questions began at 0.82, so there was a clear gap between the two
+sets. I set the cutoff at 0.60 to reject clearly unrelated questions without
+blocking valid campus-life queries.
 
-     You ran five questions your corpus covers and the five in OUT_OF_SCOPE
-     that it clearly doesn't, and wrote down the best distance for each. What
-     did those two groups look like? Where was the gap? Put the actual numbers
-     here — the table below wants all ten rows.
-
-     Milestone 4. -->
-
-| Question | In corpus? | Best distance |
-|---|---|---|
-|  |  |  |
+| Question                                                    | In corpus? | Best distance |
+| ----------------------------------------------------------- | ---------- | ------------- |
+| When can i declare my major?                                | Yes        | 0.3075        |
+| How can i get help with being tested?                       | Yes        | 0.7444        |
+| What is the coursework for physics like?                    | Yes        | 0.4952        |
+| How do travel across campus?                                | Yes        | 0.5711        |
+| What is the process for changing my major?                  | Yes        | 0.6165        |
+| What is the capital of Mongolia?                            | No         | 0.8246        |
+| How do I change the oil in a diesel engine?                 | No         | 0.9340        |
+| Who won the 1994 World Cup?                                 | No         | 0.8859        |
+| What is the recommended dosage of ibuprofen for a headache? | No         | 0.8442        |
+| How do I write a for loop in Rust?                          | No         | 0.8960        |
 
 ## How I Used AI
 
@@ -178,13 +186,13 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 
      Milestone 1. -->
 
-| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
-|---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| Criterion                              | Target | Run 1 | Run 2 | Run 3 | Verdict |
+| -------------------------------------- | ------ | ----- | ----- | ----- | ------- |
+| 1. Retrieved chunk contains the answer | 4 of 5 |       |       |       |         |
+| 2. Every answer names a source         | 5 of 5 |       |       |       |         |
+| 3. Gate stops out-of-corpus questions  | 4 of 5 |       |       |       |         |
+| 4.                                     |        |       |       |       |         |
+| 5.                                     |        |       |       |       |         |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
@@ -201,13 +209,13 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 
      Milestone 2. -->
 
-| # | Criterion | Verdict | How I decided |
-|---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| #   | Criterion | Verdict | How I decided |
+| --- | --------- | ------- | ------------- |
+| 1   |           |         |               |
+| 2   |           |         |               |
+| 3   |           |         |               |
+| 4   |           |         |               |
+| 5   |           |         |               |
 
 ## Diagnoses
 
@@ -243,13 +251,13 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 <!-- Same format, same five criteria, three runs each.
      `python run_eval.py --label after` -->
 
-| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
-|---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| Criterion                              | Target | Run 1 | Run 2 | Run 3 | Verdict |
+| -------------------------------------- | ------ | ----- | ----- | ----- | ------- |
+| 1. Retrieved chunk contains the answer | 4 of 5 |       |       |       |         |
+| 2. Every answer names a source         | 5 of 5 |       |       |       |         |
+| 3. Gate stops out-of-corpus questions  | 4 of 5 |       |       |       |         |
+| 4.                                     |        |       |       |       |         |
+| 5.                                     |        |       |       |       |         |
 
 **Did it help?**
 
