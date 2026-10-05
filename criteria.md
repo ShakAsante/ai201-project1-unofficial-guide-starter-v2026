@@ -55,7 +55,11 @@ in at least 4 of 5 tries.
 
 ---
 
-## 4. Something about your chunks
+## 4. Chunks must be a certain size
+
+---
+
+The chunks must least 200 characters and a maximum of 400 characters. Additionally no chunk should have issues with the formatting
 
 <!-- YOU WRITE THIS ONE.
 
@@ -71,13 +75,13 @@ in at least 4 of 5 tries.
 
 
 
-**Why this target:**
+**Why this target:** The sizing of the chunks in the corpus, matter because a bigger number of characters means that the search needs to read more, and leads to a higher chance of hallucination.
 
 
 
 ---
 
-## 5. Your choice
+## 5. Words in the corpus
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -87,7 +91,7 @@ in at least 4 of 5 tries.
      present — anything, as long as it names a number or an observable
      outcome. -->
 
-
+Must contain relevant words to the question, in the corpus
 
 **Why this target:**
 
